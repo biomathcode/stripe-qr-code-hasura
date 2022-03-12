@@ -1,0 +1,79 @@
+@import-normalize;
+
+:root {
+  --dark: #292929;
+  --light: #f2f2f2;
+
+  --primary: #5941a9;
+  --secondary: #6d72c3;
+
+  --gray1: hsl(0, 0%, 8.5%);
+  --gray2: hsl(0, 0%, 11%);
+  --gray3: hsl(0, 0%, 13.6%);
+  --gray4: hsl(0, 0%, 15.8%);
+  --gray5: hsl(0, 0%, 17.9%);
+  --gray6: hsl(0, 0%, 20.5%);
+  --gray7: hsl(0, 0%, 24.3%);
+  --gray8: hsl(0, 0%, 31.2%);
+  --gray9: hsl(0, 0%, 43.9%);
+  --gray10: hsl(0, 0%, 49.4%);
+  --gray11: hsl(0, 0%, 62.8%);
+  --gray12: hsl(0, 0%, 93%);
+
+  --purple1: hsl(284, 20%, 9.6%);
+  --purple2: hsl(283, 30%, 11.8%);
+  --purple3: hsl(281, 37.5%, 16.5%);
+  --purple4: hsl(280, 41.2%, 20%);
+  --purple5: hsl(279, 43.8%, 23.3%);
+  --purple6: hsl(277, 46.4%, 27.5%);
+  --purple7: hsl(275, 49.3%, 34.6%);
+  --purple8: hsl(272, 52.1%, 45.9%);
+  --purple9: hsl(272, 51%, 54%);
+  --purple10: hsl(273, 57.3%, 59.1%);
+  --purple11: hsl(275, 80%, 71%);
+  --purple12: hsl(279, 75%, 95.7%);
+
+  --violet1: hsl(250, 20%, 10.2%);
+  --violet2: hsl(255, 30.3%, 12.9%);
+  --violet3: hsl(253, 37%, 18.4%);
+  --violet4: hsl(252, 40.1%, 22.5%);
+  --violet5: hsl(252, 42.2%, 26.2%);
+  --violet6: hsl(251, 44.3%, 31.1%);
+  --violet7: hsl(250, 46.8%, 38.9%);
+  --violet8: hsl(250, 51.8%, 51.2%);
+  --violet9: hsl(252, 56%, 57.5%);
+  --violet10: hsl(251, 63.2%, 63.2%);
+  --violet11: hsl(250, 95%, 76.8%);
+  --violet12: hsl(252, 87%, 96.4%);
+
+  --grass1: hsl(146, 30%, 7.4%);
+  --grass2: hsl(136, 33.3%, 8.8%);
+  --grass3: hsl(137, 36%, 11.4%);
+  --grass4: hsl(137, 37.6%, 13.7%);
+  --grass5: hsl(136, 38.7%, 16%);
+  --grass6: hsl(135, 39.6%, 19.1%);
+  --grass7: hsl(134, 40.3%, 23.8%);
+  --grass8: hsl(131, 40.1%, 30.8%);
+  --grass9: hsl(131, 41%, 46.5%);
+  --grass10: hsl(131, 39%, 52.1%);
+  --grass11: hsl(131, 43%, 57.2%);
+  --grass12: hsl(137, 72%, 94%);
+}
+
+body {
+  margin: 0;
+  z-index: -1;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  background: var(--dark);
+  color: var(--ligth);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}

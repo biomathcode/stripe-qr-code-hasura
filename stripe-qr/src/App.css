@@ -1,0 +1,101 @@
+h1 {
+  font-size: 4rem;
+  font-family: "Arial";
+  color: var(--gray10);
+  letter-spacing: -1.5px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-family: "Arial";
+  color: var(--gray10);
+  letter-spacing: -1.5px;
+}
+
+.App {
+  width: 100vw;
+  height: 100vh;
+  color: var(--gray9);
+}
+
+.features {
+  width: 100vw;
+  height: 100vh;
+  background: var(--gray2);
+}
+
+.box {
+  width: 500px;
+  height: 400px;
+  padding: 30px;
+  background: var(--gray3);
+  border-radius: 30px;
+  box-shadow: 20px 20px 40px var(--gray4), -20px -20px 40px var(--gray4);
+}
+
+.card {
+  width: 500px;
+  margin-bottom: 30px;
+  padding: 30px;
+  background: var(--gray3);
+  color: var(--gray10);
+
+  border-radius: 20px;
+  transition: all 0.3s ease-out;
+}
+
+.card:hover {
+  box-shadow: 10px 10px 0px var(--gray1), 10px 10px 5px var(--gray1);
+}
+
+.flex {
+  display: flex;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+:focus {
+  outline: 1px solid #1f1f1f;
+}
+
+.wave {
+  animation-name: wave-animation; /* Refers to the name of your @keyframes element below */
+  animation-duration: 2.5s; /* Change to speed up or slow down */
+  animation-iteration-count: infinite; /* Never stop waving :) */
+  transform-origin: 70% 70%; /* Pivot around the bottom-left palm */
+  display: inline-block;
+}
+
+@keyframes wave-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+  10% {
+    transform: rotate(14deg);
+  } /* The following five values can be played with to make the waving more or less extreme */
+  20% {
+    transform: rotate(-8deg);
+  }
+  30% {
+    transform: rotate(14deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  60% {
+    transform: rotate(0deg);
+  } /* Reset for the last half to pause */
+  100% {
+    transform: rotate(0deg);
+  }
+}
