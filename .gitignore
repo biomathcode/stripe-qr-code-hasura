@@ -1,0 +1,7 @@
+/node_modules
+
+/stripe-qr-server/node_modules
+
+/stripe-qr/node_modules
+
+/stripe-mobile/node_modules
