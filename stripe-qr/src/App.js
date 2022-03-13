@@ -1,10 +1,14 @@
 
 import GoogleLogin from 'react-google-login';
 import './App.css';
-import QrCode from './Qrcode';
+import QrCode from './components/Qrcode';
 
 
 function App() {
+
+  const responseGoogle = (response) => {
+    console.log(response);
+  }
   return (
     <div className=" ">
       <main className='App flex center'>
@@ -31,7 +35,12 @@ function App() {
        </div>
        <div className='card'>
         <h3>
-        <GoogleLogin style={{backgroundColor: 'var(--gray1)', color: 'var(--gray10)'}}/>
+        <GoogleLogin 
+        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
+        onSuccess={responseGoogle}
+        isSignedIn={true}
+        
+        style={{backgroundColor: 'var(--gray1)', color: 'var(--gray10)'}}/>
         </h3>
 
          </div>

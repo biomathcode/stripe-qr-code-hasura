@@ -10,6 +10,7 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
+    "scheme": "stripeqr",
     "updates": {
       "fallbackToCacheTimeout": 0
     },

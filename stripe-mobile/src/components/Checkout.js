@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {View, TextInput, Button} from 'react-native';
 import {useStripe} from '@stripe/stripe-react-native';
 
 function Checkout() {
