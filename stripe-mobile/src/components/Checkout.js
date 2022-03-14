@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import {View, TextInput, Button} from 'react-native';
-import {useStripe} from '@stripe/stripe-react-native';
+// import {useStripe} from '@stripe/stripe-react-native';
 
 function Checkout() {
     const [name, setName] = useState("");
     const [amount, setAmount] = useState("1");
-    const stripe = useStripe();
+    // const stripe = useStripe();
     const donate = async () => {
         try {
           const finalAmount = parseInt(amount);

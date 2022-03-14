@@ -1,5 +1,5 @@
 import { View, Text, StyleSheet } from 'react-native';
-import { StripeProvider } from "@stripe/stripe-react-native";
+// import { StripeProvider } from "@stripe/stripe-react-native";
 import Checkout from "../components/Checkout"
 import React, { useState, useEffect } from 'react';
 import * as Linking from 'expo-linking';
@@ -7,9 +7,9 @@ import { StatusBar } from 'expo-status-bar';
 
 
 function CheckoutContainer({navigation, route}) {
-  const { itemId, otherParam } = route.params;
+  // const { itemId, otherParam } = route.params;
 
-  console.log(itemId);
+  
   const [data, setData] = useState(
     null
   );
@@ -43,11 +43,11 @@ function CheckoutContainer({navigation, route}) {
         <View style={styles.container}>
             <StatusBar style="dark" />
             <Text>{data? JSON.stringify(data) : "App not oppend from deep link"}</Text>
-            <Text>itemId: {JSON.stringify(itemId)}</Text>
-      <Text>otherParam: {JSON.stringify(otherParam)}</Text>
-              <StripeProvider publishableKey="(stripe publishable key here)">
+            {/* <Text>itemId: {JSON.stringify(itemId)}</Text>
+      <Text>otherParam: {JSON.stringify(otherParam)}</Text> */}
+              {/* <StripeProvider publishableKey="(stripe publishable key here)"> */}
                 <Checkout />
-              </StripeProvider>
+              {/* </StripeProvider> */}
           </View>
      );
 }
