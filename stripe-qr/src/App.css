@@ -12,6 +12,23 @@ h2 {
   letter-spacing: -1.5px;
 }
 
+a {
+  text-decoration: none;
+}
+
+.btn {
+  text-decoration: none;
+  background: var(--violet5);
+  color: var(--violet11);
+  padding: 1rem;
+  border-radius: 5px;
+}
+
+.btn:hover {
+  background: var(--violet1);
+  text-decoration: underline;
+}
+
 .App {
   width: 100vw;
   height: 100vh;
@@ -31,6 +48,27 @@ h2 {
   background: var(--gray3);
   border-radius: 30px;
   box-shadow: 20px 20px 40px var(--gray4), -20px -20px 40px var(--gray4);
+}
+
+.navbar {
+  height: 10px;
+  padding: 30px;
+  background: var(--gray2);
+  border-radius: 20px;
+  transition: all 0.3s ease-out;
+}
+
+.navbar li {
+  list-style: none;
+  background: var(--violet5);
+  border-radius: 5px;
+  padding: 10px;
+  color: var(--violet11);
+}
+.navbar li:hover {
+  background: var(--violet9);
+  color: var(--violet1);
+  box-shadow: 10px 10px 0px var(--gray1), 10px 10px 5px var(--gray1);
 }
 
 .card {
@@ -61,8 +99,21 @@ h2 {
   align-items: center;
 }
 
+.js {
+  justify-content: space-between;
+  align-items: center;
+}
+
 :focus {
   outline: 1px solid #1f1f1f;
+}
+
+.para {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  font-family: "Arial";
+  color: var(--gray10);
+  letter-spacing: 0px;
 }
 
 .wave {

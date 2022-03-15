@@ -1,62 +1,31 @@
-
-import GoogleLogin from 'react-google-login';
+import {BrowserRouter,Routes,Route,Link} from 'react-router-dom';
 import './App.css';
 import QrCode from './components/Qrcode';
+import Home from './pages/Home';
+import Success from './pages/Success';
+import Error from './pages/Error';
+import CoffeeShop from './pages/CoffeeShop';
+import Navbar from './components/Nav';
 
 
 function App() {
 
-  const responseGoogle = (response) => {
-    console.log(response);
-  }
   return (
-    <div className=" ">
-      <main className='App flex center'>
-      <div className='box flex center'>
-        <h1>
-        <span >
-          🥷
-          </span> <br/>
-          Introducing 
-        
-            <br/>
-          <span>
-          Stripe QR
-          </span>
-       
-        </h1>
-      </div>
-      </main>
-      <section className='features flex center column'>
-      <div className='card'>
-        <h2>
-        Features!
-        </h2>
-       </div>
-       <div className='card'>
-        <h3>
-        <GoogleLogin 
-        clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-        onSuccess={responseGoogle}
-        isSignedIn={true}
-        
-        style={{backgroundColor: 'var(--gray1)', color: 'var(--gray10)'}}/>
-        </h3>
+    <BrowserRouter>
+      <Navbar/>
 
-         </div>
-         <div className='card'>
- 
+      <Routes>
+          <Route path="/error" element={<Error/>}/>
 
-          <QrCode text={"https://coolhead.in/lkfdsmfkaldsmfldsmfdsfkmfsdkfdm"} />
-           
+          <Route path="/success" element={<Success />}/>
+    
+          <Route  element={<Home/>} path="/"/>
 
-
-         </div>
-     
-
-      </section>
-
-    </div>
+          <Route element={<CoffeeShop/>} path="/shop"/>
+            
+        </Routes>
+    </BrowserRouter>
+   
   );
 }
 
