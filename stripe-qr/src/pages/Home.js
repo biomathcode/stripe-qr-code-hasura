@@ -37,16 +37,16 @@ function Home() {
          </div>
          <div className='card flex js'>
            <h3>Static Example</h3>
-           <Link to={"/static"} > Go here </Link>
+           <Link className='btn' to={"/static"} > Go here </Link>
          </div>
          <div className='card flex js'>
            <h3>Dynamic Example</h3>
-           <Link to={"/dynamic"} > Go here </Link>
+           <Link className='btn' to={"/dynamic"} > Go here </Link>
 
          </div>
          <div className='card flex js'>
            <h3>Time Bound</h3>
-           <Link to={"/time"} > Go here </Link>
+           <Link  className='btn' to={"/time"} > Go here </Link>
            
          </div>
        
@@ -62,16 +62,16 @@ function Home() {
             </div>
             <div className='card flex js'>
             <h3> </h3>
-            <Link to={"/static"} > Go here </Link>
+            <Link className='btn' to={"/static"} > Go here </Link>
             </div>
             <div className='card flex js'>
             <h3>Dynamic Example</h3>
-            <Link to={"/dynamic"} > Go here </Link>
+            <Link className='btn' to={"/dynamic"} > Go here </Link>
 
             </div>
             <div className='card flex js'>
             <h3>Time Bound</h3>
-            <Link to={"/time"} > Go here </Link>
+            <Link className='btn' to={"/time"} > Go here </Link>
             
             </div>
        

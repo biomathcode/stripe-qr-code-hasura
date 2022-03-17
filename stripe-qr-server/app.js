@@ -1,8 +1,8 @@
 require("dotenv").config();
 const express = require("express");
 const app = express();
-const Stripe = require("stripe");
-const stripe = Stripe(process.env.STRIPE_SECRET_KEY);
+const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+
 const cors = require("cors");
 const PORT = process.env.PORT || 4000;
 
@@ -17,6 +17,50 @@ app.get('/', (req,res) => {
       "id": "1", 
       "transactionId": "sldkfmdsf", 
   })
+})
+
+app.get('/products', async (req,res) => {
+  const products = await stripe.products.list({
+    active: true, 
+    limit: 2, 
+  })
+  return res.json(products.data);
+})
+
+app.get('/config', (req, res) => {
+  res.json({
+    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY
+  })
+})
+
+
+app.get('/get-checkout-session', async (req, res) => {
+    const {id} = req.query;
+
+    const session = await stripe.checkout.sessions.retrieve(
+      id,
+      {expand: ['payment_intent']}
+    )
+    res.json(session);
+})
+
+
+app.post('/create-checkout-session', async (req, res) => {
+
+  const { token, quantity} = req.query
+  
+  const session = await stripe.checkout.sessions.create({
+    success_url: `${process.env.DOMAIN}/success?session_id=${id}&token=${token}`, 
+    cancel_url: `${process.env.DOMAIN}/cancel`, 
+    payment_method_types: ['card'],
+    line_items: [{
+      price: process.env.PRICE_BLACK_COFFEE,
+      quantity: quantity,
+    }], 
+    mode: 'payment'
+  })
+
+  res.json({id: session.id})
 })
 
 app.post("/donate", async (req, res) => {

@@ -1,11 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 function Navbar() {
+
+    const history = useNavigate()
+
     return ( 
-    <div className='flex center' style={{position:'sticky', top:'5px', display:'flex', justifyContent:'flex-end'}}>
-        <nav className='navbar js' style={{width:'20vw',alignSelf:'center', display:'flex'}}>
+    <div className='flex center' style={{position:'sticky', top:'5px',right:'10%',  display:'flex', justifyContent:'flex-end'}}>
+        <nav className='navbar js' style={{width:'15vw',position:'sticky', right:'10%',   alignSelf:'center', display:'flex'}}>
             <div className='flex ' style={{justifyContent: 'space-evenly'}} >
                 <Link to="/" style={{marginRight:'10px'}} >
                 <li style={{listStyle:'none'}}>
@@ -19,10 +22,11 @@ function Navbar() {
                     </li>
                 </Link>
 
-                <li>
-                            Go Back 
+           
+                    <li onClick={() => history(-1)}>
+                Back 
                         </li>
-        
+            
             </div>
 
               
