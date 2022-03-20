@@ -22,7 +22,7 @@ app.get('/', (req,res) => {
 app.get('/products', async (req,res) => {
   const products = await stripe.products.list({
     active: true, 
-    limit: 2, 
+    limit: 1, 
   })
   return res.json(products.data);
 })
@@ -47,15 +47,19 @@ app.get('/get-checkout-session', async (req, res) => {
 
 app.post('/create-checkout-session', async (req, res) => {
 
-  const { token, quantity} = req.query
+  console.log(req.body);
+  const {token, quantity} = req.body;
+
+
+
   
   const session = await stripe.checkout.sessions.create({
-    success_url: `${process.env.DOMAIN}/success?session_id=${id}&token=${token}`, 
+    success_url: `${process.env.DOMAIN}/success?session_id={CHECKOUT_SESSION_ID}&token=${token}`, 
     cancel_url: `${process.env.DOMAIN}/cancel`, 
     payment_method_types: ['card'],
     line_items: [{
       price: process.env.PRICE_BLACK_COFFEE,
-      quantity: quantity,
+      quantity: Number(quantity) ,
     }], 
     mode: 'payment'
   })

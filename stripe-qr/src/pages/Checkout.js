@@ -6,8 +6,11 @@ import {useSearchParams} from 'react-router-dom';
 function Checkout() {
 
   const [searchParams] = useSearchParams();
-  const tokenId = searchParams.get('token')
-  const quantity = searchParams.get('quantity')
+  const tokenId = searchParams.get('token');
+  const quantity = searchParams.get('quantity');
+
+  console.log(tokenId, quantity);
+
 
     useEffect(() => {
         const initialCheckout = async () => {
@@ -16,10 +19,15 @@ function Checkout() {
 
             const {id} = await fetch('/create-checkout-session', {
                 method:'POST', 
-                body: {
-                    quantify: quantity, 
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body:JSON.stringify({
+                    quantity: quantity, 
                     token: tokenId, 
                 }
+                ) 
             }).then((res) => res.json());
 
             const {error} = await stripe.redirectToCheckout({
@@ -33,7 +41,7 @@ function Checkout() {
         }
 
         initialCheckout();
-    }, [])
+    }, [quantity, tokenId])
 
 
     return ( 

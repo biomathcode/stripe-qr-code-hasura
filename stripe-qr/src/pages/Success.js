@@ -17,14 +17,7 @@ function Success() {
 
     const token = useQuery().get('token')
 
-    if(token) {
-        const tokenUpdate = updateToken({variables: {
-            id: token, 
-            status: 'success'
-        }})
-
-        console.log(tokenUpdate);
-    }
+    
 
     useEffect(() => {
         const fetchSessionData= async () =>{
@@ -37,6 +30,15 @@ function Success() {
             setData(sessionData);
         }
         fetchSessionData()
+
+        if(token) {
+            const tokenUpdate = updateToken({variables: {
+                id: token, 
+                status: 'success'
+            }})
+    
+            console.log(tokenUpdate);
+        }
     }, [])
 
 

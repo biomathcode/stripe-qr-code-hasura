@@ -16,12 +16,21 @@ import { getMainDefinition } from '@apollo/client/utilities';
 
 
 const httpLink = new HttpLink({
-  uri: 'https://pratik-todo.hasura.app/v1/graphql'
+  uri: 'https://pratik-todo.hasura.app/v1/graphql',
+  headers: {
+    "x-hasura-admin-secret": process.env.REACT_APP_HASURA_SECRET
+  }
 });
 
 
 const wsLink = new GraphQLWsLink(createClient({
-  url: 'ws://pratik-todo.hasura.app/v1/graphql'
+  url: 'ws://pratik-todo.hasura.app/v1/graphql',
+  connectionParams: {
+    headers: {
+      'x-hasura-admin-secret': process.env.REACT_APP_HASURA_SECRET
+    }
+  },
+  retryAttempts: 10
 }));
 
 const splitLink = split(

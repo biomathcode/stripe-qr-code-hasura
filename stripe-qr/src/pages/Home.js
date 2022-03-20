@@ -29,7 +29,7 @@ function Home() {
             <h2 className=' para'> This is a prototype feature build on top of Stripe API to connect web application with mobile app such that user can continue his transaction on his mobile via scanning a QR code.  </h2>
         </div>
 
-        <section className='features flex center column'>
+        {/* <section className='features flex center column'>
         <div className='card'>
           <h2>
           Examples - Web browser
@@ -77,7 +77,7 @@ function Home() {
        
   
         </section>
-  
+   */}
       </div>
      );
 }

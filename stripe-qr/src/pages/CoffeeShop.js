@@ -6,6 +6,40 @@ import { useMutation, useSubscription, gql } from "@apollo/client";
 import { ADD_TOKEN, SUBSCRIPTION } from "../graphql";
 import { v4 as uuidv4 } from "uuid";
 
+
+
+
+function QrGenerator({token, quantity}) {
+
+  const { data, loading, error } = useSubscription(SUBSCRIPTION, {
+    variables: { id: token },
+  });
+
+  if (loading) {
+    return <div>loading...</div>;
+  }
+  if(error) {
+   return  console.log(error)
+  }
+
+
+  const checkout = `${window.location.origin}/checkout?token=${token}&quantity=${quantity}`;
+
+  console.log(checkout)
+  return (
+    <div>
+      <h3 style={{color: 'white', zIndex:5, marginBottom:'100px'}}>Status: {data.token_by_pk.status}</h3>
+
+       <QRCode value={checkout} size={250} includeMargin={true} />;
+
+
+    </div>
+  )
+  
+};
+
+
+
 function CoffeeShop() {
 
   const [product, setProduct] = React.useState();
@@ -28,16 +62,19 @@ function CoffeeShop() {
   const ProductDisplay = () => {
     const [AddToken, { data, loading, error }] = useMutation(ADD_TOKEN);
 
+
+    const createToken = uuidv4();
+
     const handleClick = async () => {
-      const token = await AddToken({
+      const token =  await AddToken({
         variables: {
-          id: uuidv4(),
+          id: createToken,
           status: "inprogress",
         },
       });
 
-      console.log(token);
-      setToken(token);
+
+      setToken(token.data.insert_token.returning[0].id);
 
       setQR(true);
     };
@@ -52,10 +89,10 @@ function CoffeeShop() {
 
     return (
       <div>
-        {product[0].map((el) => (
+        {product.map((el) => (
           <div className="flex js card" key={el.key}>
             <h2>{el.name}</h2>
-            <input value={quantity} onChange={(e) => setQuantity(e.target.value)} />
+            <input type="number" value={quantity} onChange={(e) => setQuantity(e.target.value)} />
           </div>
         ))}
         <button className="btn" onClick={handleClick}>
@@ -65,22 +102,6 @@ function CoffeeShop() {
     );
   };
 
-  const QrGenerator = (token, quantity) => {
-    const { data, loading } = useSubscription(SUBSCRIPTION, {
-      variables: { token },
-    });
-
-    if (loading) {
-      return <div>loading...</div>;
-    }
-
-    if (data) {
-      console.log(data);
-    }
-
-    const checkout = `${window.location.origin}/checkout?token=${token}&quantity=${quantity}`;
-    return <QRCode value={checkout} size={250} includeMargin={true} />;
-  };
 
   return (
     <>
@@ -89,11 +110,15 @@ function CoffeeShop() {
           <h2 className="card">Welcome to Coffee Shop</h2>
         </div>
         {product && <ProductDisplay />}
-        {QRCode && QR && (
+        
+        { QR && token ? (
           <div className="card flex center">
             <QrGenerator token={token} quantity={quantity} />
           </div>
-        )}
+        ): 
+        <div>
+          <div> Generate a QR code to pay via mobile app  </div>
+        </div> }
       </div>
     </>
   );
